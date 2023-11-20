@@ -1,8 +1,10 @@
+# Download website unzip and move to working folder
 wget https://www.free-css.com/assets/files/free-css-templates/download/page290/wave-cafe.zip
 unzip wave-cafe.zip && rm wave-cafe.zip
 cp -r 2121_wave_cafe/* .
 rm -rf 2121_wave_cafe
 
+# Create docker file
 cat <<% > Dockerfile
 FROM debian
 
@@ -14,6 +16,7 @@ EXPOSE 80
 CMD apachectl -D FOREGROUND
 %
 
+# update Readme
 cat <<% > README.md
 # wavecafe
 This is public repo for wavecafe with docker file to build image from debian apache2 and expose 80.
@@ -33,6 +36,7 @@ This is public repo for wavecafe with docker file to build image from debian apa
     docker stop 6e72db6640a9
 %
 
+# push to github
 git status
 git add .
 git commit -m "Updated files"
